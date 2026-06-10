@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run build:prod
         env:
-          VITE_CONVEX_URL: https://courteous-deer-752.convex.cloud
+          VITE_CONVEX_URL: https://impressive-greyhound-118.eu-west-1.convex.cloud
           VITE_SITE_URL: https://www.voices38.xyz
 
       - uses: actions/upload-artifact@v4
