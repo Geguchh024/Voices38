@@ -1,0 +1,28 @@
+name: Build production site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build:prod
+        env:
+          VITE_CONVEX_URL: https://courteous-deer-752.convex.cloud
+          VITE_SITE_URL: https://www.voices38.xyz
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist

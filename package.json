@@ -10,6 +10,9 @@
     "seed:nfo": "npx convex run seedNfo:importNfoGames",
     "auth:setup": "node scripts/setupAuthKeys.mjs",
     "build": "vite build",
+    "build:prod": "vite build --mode production",
+    "deploy:convex": "convex deploy --env-file .env.production",
+    "deploy:convex:auth": "node scripts/setupAuthKeys.mjs --prod",
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --project tsconfig.app.json"

@@ -6,7 +6,17 @@ import { ConvexAuthProvider } from '@convex-dev/auth/react'
 import { routeTree } from './routeTree.gen'
 import './index.css'
 
-const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string)
+const convexUrl = import.meta.env.VITE_CONVEX_URL
+
+if (!convexUrl) {
+  throw new Error(
+    'Missing VITE_CONVEX_URL. For production, set it in .env.production before building. ' +
+      'For local dev, run `npx convex dev` to populate .env.local. ' +
+      'See https://docs.convex.dev/production/hosting/',
+  )
+}
+
+const convex = new ConvexReactClient(convexUrl)
 
 const router = createRouter({ routeTree })
 

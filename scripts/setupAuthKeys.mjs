@@ -19,7 +19,13 @@ writeFileSync(
 
 console.log("Setting JWT_PRIVATE_KEY and JWKS on your Convex deployment...");
 
-const result = spawnSync("npx", ["convex", "env", "set", "--from-file", envFile, "--force"], {
+const prodFlag = process.argv.includes("--prod");
+const deployArgs = ["convex", "env", "set", "--from-file", envFile, "--force"];
+if (prodFlag) {
+  deployArgs.push("--prod");
+}
+
+const result = spawnSync("npx", deployArgs, {
   stdio: "inherit",
   shell: true,
 });
