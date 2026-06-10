@@ -34,7 +34,7 @@ export const importNfoGames = internalMutation({
         title: game.title,
         format: game.format,
         releaseDate: game.releaseDate,
-        shopReleaseDate: game.shopReleaseDate,
+        crackDate: game.crackDate,
         releaseType: game.releaseType,
         genre: game.genre,
         protection: game.protection,

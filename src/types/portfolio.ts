@@ -3,7 +3,7 @@ export interface Release {
   title: string
   format: string
   releaseDate: string
-  shopReleaseDate?: string
+  crackDate?: string
   releaseType?: string
   genre: string
   protection: string

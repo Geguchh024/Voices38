@@ -18,6 +18,7 @@ import type * as http from "../http.js";
 import type * as lib_auth from "../lib/auth.js";
 import type * as lib_customFunctions from "../lib/customFunctions.js";
 import type * as lib_releaseValidator from "../lib/releaseValidator.js";
+import type * as migrations_renameCrackDate from "../migrations/renameCrackDate.js";
 import type * as nfoReleases from "../nfoReleases.js";
 import type * as portfolio from "../portfolio.js";
 import type * as seed from "../seed.js";
@@ -41,6 +42,7 @@ declare const fullApi: ApiFromModules<{
   "lib/auth": typeof lib_auth;
   "lib/customFunctions": typeof lib_customFunctions;
   "lib/releaseValidator": typeof lib_releaseValidator;
+  "migrations/renameCrackDate": typeof migrations_renameCrackDate;
   nfoReleases: typeof nfoReleases;
   portfolio: typeof portfolio;
   seed: typeof seed;

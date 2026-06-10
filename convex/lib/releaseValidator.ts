@@ -5,7 +5,7 @@ export const releaseFieldsValidator = v.object({
   title: v.string(),
   format: v.string(),
   releaseDate: v.string(),
-  shopReleaseDate: v.optional(v.string()),
+  crackDate: v.optional(v.string()),
   releaseType: v.optional(v.string()),
   genre: v.string(),
   protection: v.string(),
@@ -21,7 +21,7 @@ export function mapReleaseToPortfolio(release: {
   title: string;
   format: string;
   releaseDate: string;
-  shopReleaseDate?: string;
+  crackDate?: string;
   releaseType?: string;
   genre: string;
   protection: string;
@@ -31,12 +31,14 @@ export function mapReleaseToPortfolio(release: {
   testers?: string[];
   downloadUrl?: string;
 }) {
+  const legacy = release as typeof release & { shopReleaseDate?: string };
+
   return {
     id: release.slug,
     title: release.title,
     format: release.format,
     releaseDate: release.releaseDate,
-    shopReleaseDate: release.shopReleaseDate,
+    crackDate: release.crackDate ?? legacy.shopReleaseDate,
     releaseType: release.releaseType,
     genre: release.genre,
     protection: release.protection,

@@ -10,7 +10,7 @@ export default defineSchema({
     title: v.string(),
     format: v.string(),
     releaseDate: v.string(),
-    shopReleaseDate: v.optional(v.string()),
+    crackDate: v.optional(v.string()),
     releaseType: v.optional(v.string()),
     genre: v.string(),
     protection: v.string(),

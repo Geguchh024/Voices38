@@ -6,7 +6,7 @@ interface ReleaseCardProps {
 
 export function ReleaseCard({ release }: ReleaseCardProps) {
   return (
-    <div className="terminal-border group p-4 transition-colors hover:bg-white hover:text-black">
+    <div className="terminal-border group h-fit self-start p-4 transition-colors hover:bg-white hover:text-black">
       <div className="mb-4 flex items-start justify-between gap-4">
         <div className="font-bold">{release.title}</div>
         <div className="shrink-0 text-xs">[{release.format}]</div>
@@ -14,8 +14,8 @@ export function ReleaseCard({ release }: ReleaseCardProps) {
 
       <div className="mb-4 space-y-1 text-sm tracking-widest opacity-80">
         <p>RELEASE DATE: {release.releaseDate}</p>
-        {release.shopReleaseDate && (
-          <p>SHOP DATE: {release.shopReleaseDate}</p>
+        {release.crackDate && (
+          <p>CRACK DATE: {release.crackDate}</p>
         )}
         {release.developer && <p>DEVELOPER: {release.developer}</p>}
         <p>GENRE: {release.genre}</p>

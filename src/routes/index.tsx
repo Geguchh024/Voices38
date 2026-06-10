@@ -48,7 +48,7 @@ function HomePage() {
 
       <section id="releases" className="mb-12 scroll-mt-28">
         <SectionHeading title="CURRENT_RELEASES" />
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
           {data.releases.map((release) => (
             <ReleaseCard key={release.id} release={release} />
           ))}
