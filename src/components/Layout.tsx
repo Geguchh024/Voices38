@@ -13,7 +13,7 @@ export function Layout({ children, activeNav }: LayoutProps) {
     <div className="crt-flicker custom-scrollbar min-h-screen bg-black text-white">
       <ClickRipple />
       <Header activeNav={activeNav} />
-      <main className="mx-auto max-w-[1024px] px-4 pt-24 pb-12 md:px-10">{children}</main>
+      <main className="mx-auto max-w-[1024px] px-4 pt-24 pb-8 md:px-10">{children}</main>
       <Footer />
     </div>
   )

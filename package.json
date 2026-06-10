@@ -5,21 +5,35 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:convex": "npx convex dev",
+    "seed": "npx convex run seed:seedDefault",
+    "seed:nfo": "npx convex run seedNfo:importNfoGames",
+    "auth:setup": "node scripts/setupAuthKeys.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit --project tsconfig.app.json"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.80.7",
+    "@auth/core": "^0.41.1",
+    "@convex-dev/auth": "^0.0.94",
     "@tanstack/react-router": "^1.121.34",
+    "convex": "^1.41.0",
+    "convex-helpers": "^0.1.119",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@convex-dev/eslint-plugin": "^2.0.0",
     "@tailwindcss/vite": "^4.1.10",
     "@tanstack/router-plugin": "^1.121.34",
+    "@types/node": "^25.9.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
     "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^10.4.1",
     "tailwindcss": "^4.1.10",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"

@@ -3,8 +3,14 @@ export interface Release {
   title: string
   format: string
   releaseDate: string
+  shopReleaseDate?: string
+  releaseType?: string
   genre: string
   protection: string
+  developer?: string
+  installNote?: string
+  releaseSupporters?: string[]
+  testers?: string[]
   downloadUrl?: string
 }
 
@@ -27,12 +33,11 @@ export interface CryptoWallet {
 
 export interface PortfolioData {
   releases: Release[]
+  archiveReleases: Release[]
   projects: Project[]
   supporters: Supporter[]
   cryptoWallets: CryptoWallet[]
-  isoImage: string
-  blake3Hash: string
   installationSteps: string[]
-  installationNote: string
   notes: string
+  contactEmail?: string
 }

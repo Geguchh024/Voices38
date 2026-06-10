@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="VOICES38 secure terminal preview">
+  <defs>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="rgba(255,255,255,0.03)"/>
+    </pattern>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#000000"/>
+  <rect width="1200" height="630" fill="url(#scanlines)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <rect x="48" y="48" width="1104" height="534" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+  <rect x="48" y="48" width="1104" height="56" fill="#ffffff"/>
+
+  <text x="72" y="86" fill="#000000" font-family="Consolas, Courier New, monospace" font-size="28" font-weight="700" letter-spacing="4">
+    VOICES38://SECURE_TERMINAL
+  </text>
+  <text x="1080" y="86" text-anchor="end" fill="#000000" font-family="Consolas, Courier New, monospace" font-size="24" font-weight="700">
+    [#][-][X]
+  </text>
+
+  <text x="72" y="150" fill="#ffffff" font-family="Consolas, Courier New, monospace" font-size="24" letter-spacing="2">
+    C:\VOICES38&gt; system.boot
+  </text>
+  <text x="72" y="188" fill="#8ae234" font-family="Consolas, Courier New, monospace" font-size="22" letter-spacing="1">
+    [OK] Secure terminal online
+  </text>
+  <text x="72" y="226" fill="#ffffff" font-family="Consolas, Courier New, monospace" font-size="24" letter-spacing="2">
+    C:\VOICES38&gt; dir /releases
+  </text>
+  <text x="96" y="264" fill="#cccccc" font-family="Consolas, Courier New, monospace" font-size="22">
+    007.First.Light-voices38.iso
+  </text>
+  <text x="96" y="298" fill="#cccccc" font-family="Consolas, Courier New, monospace" font-size="22">
+    CYBER_PHANTOM_2077.iso
+  </text>
+  <text x="96" y="332" fill="#cccccc" font-family="Consolas, Courier New, monospace" font-size="22">
+    VOID_SIGNAL_RELAY.iso
+  </text>
+  <text x="72" y="384" fill="#ffffff" font-family="Consolas, Courier New, monospace" font-size="24" letter-spacing="2">
+    C:\VOICES38&gt; open hub --main
+  </text>
+  <text x="72" y="422" fill="#8ae234" font-family="Consolas, Courier New, monospace" font-size="22">
+    [OK] Releases, archive, and project logs ready
+  </text>
+  <text x="72" y="478" fill="#ffffff" font-family="Consolas, Courier New, monospace" font-size="24" letter-spacing="2">
+    C:\VOICES38&gt; _
+  </text>
+
+  <rect x="72" y="520" width="1056" height="1" fill="#444748"/>
+  <text x="72" y="552" fill="#8e9192" font-family="Consolas, Courier New, monospace" font-size="18" letter-spacing="3">
+    INDEPENDENT GAME RELEASE HUB // VOICES38_v1.0
+  </text>
+</svg>

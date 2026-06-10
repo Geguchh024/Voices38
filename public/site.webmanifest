@@ -1,0 +1,22 @@
+{
+  "name": "VOICES38 Secure Terminal",
+  "short_name": "VOICES38",
+  "description": "Independent retro-terminal game release hub.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/og-preview.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -17,6 +17,134 @@
       "genre": "RPG",
       "protection": "STEAM_DRM",
       "downloadUrl": "#"
+    },
+    {
+      "id": "void-signal-relay",
+      "title": "VOID_SIGNAL_RELAY",
+      "format": "ISO",
+      "releaseDate": "03/15/2026",
+      "genre": "HORROR",
+      "protection": "NONE",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "phantom-grid-engine",
+      "title": "PHANTOM_GRID_ENGINE",
+      "format": "BIN",
+      "releaseDate": "01/22/2026",
+      "genre": "RACING",
+      "protection": "CUSTOM",
+      "downloadUrl": "#"
+    }
+  ],
+  "archiveReleases": [
+    {
+      "id": "007-first-light",
+      "title": "007.First.Light-voices38",
+      "format": "ISO",
+      "releaseDate": "09/06/2026",
+      "genre": "STEALTH ACTION",
+      "protection": "DENUVO + CUSTOM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "cyber-phantom-2077",
+      "title": "CYBER_PHANTOM_2077",
+      "format": "BIN",
+      "releaseDate": "12/04/2026",
+      "genre": "RPG",
+      "protection": "STEAM_DRM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "void-signal-relay",
+      "title": "VOID_SIGNAL_RELAY",
+      "format": "ISO",
+      "releaseDate": "03/15/2026",
+      "genre": "HORROR",
+      "protection": "NONE",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "phantom-grid-engine",
+      "title": "PHANTOM_GRID_ENGINE",
+      "format": "BIN",
+      "releaseDate": "01/22/2026",
+      "genre": "RACING",
+      "protection": "CUSTOM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "neon-drift-zero",
+      "title": "NEON_DRIFT_ZERO",
+      "format": "ISO",
+      "releaseDate": "11/08/2025",
+      "genre": "ARCADE RACER",
+      "protection": "NONE",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "static-horizon",
+      "title": "STATIC_HORIZON",
+      "format": "BIN",
+      "releaseDate": "08/19/2025",
+      "genre": "SURVIVAL",
+      "protection": "STEAM_DRM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "cipher-protocol",
+      "title": "CIPHER_PROTOCOL",
+      "format": "ISO",
+      "releaseDate": "05/02/2025",
+      "genre": "PUZZLE",
+      "protection": "CUSTOM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "black-ice-arena",
+      "title": "BLACK_ICE_ARENA",
+      "format": "BIN",
+      "releaseDate": "02/14/2025",
+      "genre": "FIGHTER",
+      "protection": "NONE",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "ghost-line-tactics",
+      "title": "GHOST_LINE_TACTICS",
+      "format": "ISO",
+      "releaseDate": "10/30/2024",
+      "genre": "STRATEGY",
+      "protection": "DENUVO + CUSTOM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "pulse-runner-x",
+      "title": "PULSE_RUNNER_X",
+      "format": "BIN",
+      "releaseDate": "07/11/2024",
+      "genre": "PLATFORMER",
+      "protection": "NONE",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "deep-signal-v2",
+      "title": "DEEP_SIGNAL_V2",
+      "format": "ISO",
+      "releaseDate": "04/03/2024",
+      "genre": "ADVENTURE",
+      "protection": "STEAM_DRM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "zero-day-legacy",
+      "title": "ZERO_DAY_LEGACY",
+      "format": "BIN",
+      "releaseDate": "01/17/2024",
+      "genre": "SHOOTER",
+      "protection": "CUSTOM",
+      "downloadUrl": "#"
     }
   ],
   "projects": [
@@ -26,13 +154,6 @@
       "version": "v0.98-BETA",
       "progress": 85,
       "eta": "2026-10-15T14:00:00Z"
-    },
-    {
-      "id": "bio-kernel-bypass",
-      "name": "BIO_KERNEL_BYPASS",
-      "version": "v1.0.1-ALPHA",
-      "progress": 42,
-      "eta": "2027-01-20T09:00:00Z"
     }
   ],
   "supporters": [
@@ -65,14 +186,11 @@
       "address": "ERxDeF4up9mfYnsY5p6QFMoUc8SavGSnxjbAsDYPJRPm"
     }
   ],
-  "isoImage": "VOICES38_CORE_MASTER_v1.iso",
-  "blake3Hash": "78d4139a1c7b3c11bb57531a2917ada5731e1a6ad1af66de882052b44562b2ad",
   "installationSteps": [
     "Burn or mount the iso",
     "Run setup.exe and install",
     "Copy the crack from voices38 to install dir",
     "Play"
   ],
-  "installationNote": "This release is based on game v1.0.",
   "notes": "Want to support the development of future cracks? You can now donate. All the funds will be used to buy various expensive hardware for testing. The denuvo iterations are getting harder to do properly, so I need hardware, to ensure stability."
 }

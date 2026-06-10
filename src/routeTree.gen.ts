@@ -9,18 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReleasesRouteImport } from './routes/releases'
 import { Route as InfoRouteImport } from './routes/info'
-import { Route as DatabaseRouteImport } from './routes/database'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminSupportersRouteImport } from './routes/admin/supporters'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminReleasesRouteImport } from './routes/admin/releases'
+import { Route as AdminProjectsRouteImport } from './routes/admin/projects'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminDonationsRouteImport } from './routes/admin/donations'
 
+const ReleasesRoute = ReleasesRouteImport.update({
+  id: '/releases',
+  path: '/releases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InfoRoute = InfoRouteImport.update({
   id: '/info',
   path: '/info',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DatabaseRoute = DatabaseRouteImport.update({
-  id: '/database',
-  path: '/database',
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -28,39 +41,138 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSupportersRoute = AdminSupportersRouteImport.update({
+  id: '/supporters',
+  path: '/supporters',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminReleasesRoute = AdminReleasesRouteImport.update({
+  id: '/releases',
+  path: '/releases',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminProjectsRoute = AdminProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminDonationsRoute = AdminDonationsRouteImport.update({
+  id: '/donations',
+  path: '/donations',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/database': typeof DatabaseRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/info': typeof InfoRoute
+  '/releases': typeof ReleasesRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/releases': typeof AdminReleasesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/supporters': typeof AdminSupportersRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/database': typeof DatabaseRoute
   '/info': typeof InfoRoute
+  '/releases': typeof ReleasesRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/releases': typeof AdminReleasesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/supporters': typeof AdminSupportersRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/database': typeof DatabaseRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/info': typeof InfoRoute
+  '/releases': typeof ReleasesRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/releases': typeof AdminReleasesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/supporters': typeof AdminSupportersRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/database' | '/info'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/info'
+    | '/releases'
+    | '/admin/donations'
+    | '/admin/login'
+    | '/admin/projects'
+    | '/admin/releases'
+    | '/admin/settings'
+    | '/admin/supporters'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/database' | '/info'
-  id: '__root__' | '/' | '/database' | '/info'
+  to:
+    | '/'
+    | '/info'
+    | '/releases'
+    | '/admin/donations'
+    | '/admin/login'
+    | '/admin/projects'
+    | '/admin/releases'
+    | '/admin/settings'
+    | '/admin/supporters'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/info'
+    | '/releases'
+    | '/admin/donations'
+    | '/admin/login'
+    | '/admin/projects'
+    | '/admin/releases'
+    | '/admin/settings'
+    | '/admin/supporters'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DatabaseRoute: typeof DatabaseRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   InfoRoute: typeof InfoRoute
+  ReleasesRoute: typeof ReleasesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/releases': {
+      id: '/releases'
+      path: '/releases'
+      fullPath: '/releases'
+      preLoaderRoute: typeof ReleasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/info': {
       id: '/info'
       path: '/info'
@@ -68,11 +180,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InfoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/database': {
-      id: '/database'
-      path: '/database'
-      fullPath: '/database'
-      preLoaderRoute: typeof DatabaseRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -82,13 +194,87 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/supporters': {
+      id: '/admin/supporters'
+      path: '/supporters'
+      fullPath: '/admin/supporters'
+      preLoaderRoute: typeof AdminSupportersRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/releases': {
+      id: '/admin/releases'
+      path: '/releases'
+      fullPath: '/admin/releases'
+      preLoaderRoute: typeof AdminReleasesRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/projects': {
+      id: '/admin/projects'
+      path: '/projects'
+      fullPath: '/admin/projects'
+      preLoaderRoute: typeof AdminProjectsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/donations': {
+      id: '/admin/donations'
+      path: '/donations'
+      fullPath: '/admin/donations'
+      preLoaderRoute: typeof AdminDonationsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminDonationsRoute: typeof AdminDonationsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminProjectsRoute: typeof AdminProjectsRoute
+  AdminReleasesRoute: typeof AdminReleasesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminSupportersRoute: typeof AdminSupportersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminDonationsRoute: AdminDonationsRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminProjectsRoute: AdminProjectsRoute,
+  AdminReleasesRoute: AdminReleasesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminSupportersRoute: AdminSupportersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DatabaseRoute: DatabaseRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
   InfoRoute: InfoRoute,
+  ReleasesRoute: ReleasesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

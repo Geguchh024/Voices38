@@ -3,9 +3,10 @@ import type { CryptoWallet } from '@/types/portfolio'
 interface CryptoDonationsProps {
   notes: string
   wallets: CryptoWallet[]
+  contactEmail?: string
 }
 
-export function CryptoDonations({ notes, wallets }: CryptoDonationsProps) {
+export function CryptoDonations({ notes, wallets, contactEmail }: CryptoDonationsProps) {
   const copyAddress = async (address: string) => {
     await navigator.clipboard.writeText(address)
   }
@@ -19,6 +20,15 @@ export function CryptoDonations({ notes, wallets }: CryptoDonationsProps) {
       </div>
 
       <p className="mb-6 text-sm leading-relaxed tracking-wide">{notes}</p>
+
+      {contactEmail && (
+        <p className="mb-6 text-sm tracking-widest">
+          CONTACT:{' '}
+          <a href={`mailto:${contactEmail}`} className="underline hover:opacity-70">
+            {contactEmail}
+          </a>
+        </p>
+      )}
 
       <div className="space-y-6 text-xs tracking-widest">
         {wallets.map((wallet) => (
