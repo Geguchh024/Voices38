@@ -1,0 +1,78 @@
+{
+  "releases": [
+    {
+      "id": "007-first-light",
+      "title": "007.First.Light-voices38",
+      "format": "ISO",
+      "releaseDate": "09/06/2026",
+      "genre": "STEALTH ACTION",
+      "protection": "DENUVO + CUSTOM",
+      "downloadUrl": "#"
+    },
+    {
+      "id": "cyber-phantom-2077",
+      "title": "CYBER_PHANTOM_2077",
+      "format": "BIN",
+      "releaseDate": "12/04/2026",
+      "genre": "RPG",
+      "protection": "STEAM_DRM",
+      "downloadUrl": "#"
+    }
+  ],
+  "projects": [
+    {
+      "id": "nebula-decoder",
+      "name": "PROJECT_NEBULA_DECODER",
+      "version": "v0.98-BETA",
+      "progress": 85,
+      "eta": "2026-10-15T14:00:00Z"
+    },
+    {
+      "id": "bio-kernel-bypass",
+      "name": "BIO_KERNEL_BYPASS",
+      "version": "v1.0.1-ALPHA",
+      "progress": 42,
+      "eta": "2027-01-20T09:00:00Z"
+    }
+  ],
+  "supporters": [
+    { "name": "Crystal" },
+    { "name": "Badwith_Names" },
+    { "name": "nah" },
+    { "name": "Mod Weath" },
+    { "name": "kuba271k (x2)" },
+    { "name": "acidmilq" },
+    { "name": "DarkMahesvara" },
+    { "name": "Nitsuga" },
+    { "name": "Pantheon" },
+    { "name": "13 unknown" }
+  ],
+  "cryptoWallets": [
+    {
+      "symbol": "BTC",
+      "address": "bc1q48cvs8awyn07zqz4kvcnum2evdghjs9ruw985x"
+    },
+    {
+      "symbol": "XMR",
+      "address": "42tbMLouwxWTq8YMKQMFNF3M2zRTRaabyKhUx5Nhkoov67WxTox9f3E3a3zQWYxJsuJi8hu5V15MWGuTUhY7GNHe3c8A169"
+    },
+    {
+      "symbol": "ETH",
+      "address": "0x31D8A4Cb666C127e08C69F8135Ef8803dDaed61f"
+    },
+    {
+      "symbol": "SOL",
+      "address": "ERxDeF4up9mfYnsY5p6QFMoUc8SavGSnxjbAsDYPJRPm"
+    }
+  ],
+  "isoImage": "VOICES38_CORE_MASTER_v1.iso",
+  "blake3Hash": "78d4139a1c7b3c11bb57531a2917ada5731e1a6ad1af66de882052b44562b2ad",
+  "installationSteps": [
+    "Burn or mount the iso",
+    "Run setup.exe and install",
+    "Copy the crack from voices38 to install dir",
+    "Play"
+  ],
+  "installationNote": "This release is based on game v1.0.",
+  "notes": "Want to support the development of future cracks? You can now donate. All the funds will be used to buy various expensive hardware for testing. The denuvo iterations are getting harder to do properly, so I need hardware, to ensure stability."
+}

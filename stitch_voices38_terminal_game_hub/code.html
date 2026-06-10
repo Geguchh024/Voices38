@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VOICES38 | SECURE_TERMINAL_V1.0</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131313;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: crosshair;
+            overflow-x: hidden;
+        }
+
+        /* Scanline Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.98; }
+            50% { opacity: 1; }
+            100% { opacity: 0.99; }
+        }
+
+        .terminal-border {
+            border: 1px solid #ffffff;
+        }
+
+        .ascii-header {
+            line-height: 1;
+            white-space: pre;
+            font-size: 0.6rem;
+        }
+
+        @media (min-width: 768px) {
+            .ascii-header {
+                font-size: 1rem;
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ffffff;
+        }
+
+        .glitch-hover:hover {
+            text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+        }
+
+        .blink {
+            animation: blinker 1s step-start infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#ffffff",
+                        "background": "#131313",
+                        "surface": "#131313",
+                        "outline": "#8e9192",
+                        "outline-variant": "#444748",
+                        "on-background": "#e2e2e2",
+                        "primary-container": "#e2e2e2",
+                        "on-primary-container": "#636565",
+                        "on-primary": "#2f3131"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1024px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="dark crt-flicker custom-scrollbar">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 bg-background dark:bg-background border-b-2 border-primary dark:border-primary fixed z-50 w-full">
+<div class="flex justify-between items-center w-full px-margin-desktop py-2 max-w-container-max mx-auto">
+<div class="text-headline-lg font-headline-lg text-primary dark:text-primary tracking-tighter uppercase">
+                VOICES38_v1.0
+            </div>
+<nav class="hidden md:flex gap-4 items-center">
+<a class="text-on-primary bg-primary font-bold px-2 hover:bg-primary-container hover:text-on-primary-container transition-colors Active: opacity-80 duration-75" href="#">RELEASES</a>
+<a class="text-primary dark:text-primary font-label-mono p-2 hover:bg-primary-container hover:text-on-primary-container transition-colors" href="#">PROJECTS</a>
+<a class="text-primary dark:text-primary font-label-mono p-2 hover:bg-primary-container hover:text-on-primary-container transition-colors" href="#">CRYPTO</a>
+<a class="text-primary dark:text-primary font-label-mono p-2 hover:bg-primary-container hover:text-on-primary-container transition-colors" href="#">DATABASE</a>
+<a class="text-primary dark:text-primary font-label-mono p-2 hover:bg-primary-container hover:text-on-primary-container transition-colors" href="#">INFO</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-background px-4 py-1 font-label-mono font-bold hover:bg-transparent hover:text-primary border border-primary transition-all">
+                    LOGIN.EXE
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 max-w-container-max mx-auto px-4 md:px-margin-desktop">
+<!-- Hero ASCII Art Section -->
+<section class="mb-12">
+<div class="terminal-border p-6 bg-black">
+<pre class="ascii-header text-primary text-center">██╗   ██╗ ██████╗ ██╗ ██████╗███████╗███████╗██████╗  █████╗ 
+██║   ██║██╔═══██╗██║██╔════╝██╔════╝██╔════╝╚════██╗██╔══██╗
+██║   ██║██║   ██║██║██║     █████╗  ███████╗ █████╔╝╚█████╔╝
+╚██╗ ██╔╝██║   ██║██║██║     ██╔══╝  ╚════██║ ╚═══██╗██╔══██╗
+ ╚████╔╝ ╚██████╔╝██║╚██████╗███████╗███████║██████╔╝╚█████╔╝
+  ╚═══╝   ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚══════╝╚═════╝  ╚════╝ 
+                </pre>
+<div class="mt-8 font-label-mono text-primary space-y-2">
+<p class="flex gap-2"><span>[SYSTEM]</span> <span id="typewriter">INITIALIZING KERNEL...</span><span class="blink">_</span></p>
+<p><span>[STATUS]</span> CONNECTION: SECURE_V38</p>
+<p><span>[USER]</span> ANONYMOUS@GUEST</p>
+</div>
+</div>
+</section>
+<!-- Current Releases Section -->
+<section class="mb-12">
+<div class="flex items-center gap-4 mb-4">
+<h2 class="text-headline-md font-headline-md uppercase">CURRENT_RELEASES</h2>
+<div class="flex-grow border-t border-primary border-dashed"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Release 1 -->
+<div class="terminal-border p-4 hover:bg-white hover:text-black transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="font-bold">007.First.Light-voices38</div>
+<div class="text-xs">[ISO]</div>
+</div>
+<div class="space-y-1 text-sm font-label-mono opacity-80 mb-6">
+<p>RELEASE DATE: 09/06/2026</p>
+<p>GENRE: STEALTH ACTION</p>
+<p>PROTECTION: DENUVO + CUSTOM</p>
+</div>
+<button class="w-full border border-current py-2 font-bold group-hover:bg-black group-hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span> DOWNLOAD.EXE
+                    </button>
+</div>
+<!-- Release 2 -->
+<div class="terminal-border p-4 hover:bg-white hover:text-black transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="font-bold">CYBER_PHANTOM_2077</div>
+<div class="text-xs">[BIN]</div>
+</div>
+<div class="space-y-1 text-sm font-label-mono opacity-80 mb-6">
+<p>RELEASE DATE: 12/04/2026</p>
+<p>GENRE: RPG</p>
+<p>PROTECTION: STEAM_DRM</p>
+</div>
+<button class="w-full border border-current py-2 font-bold group-hover:bg-black group-hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span> DOWNLOAD.EXE
+                    </button>
+</div>
+</div>
+</section>
+<!-- Projects In Progress Section -->
+<section class="mb-12">
+<div class="flex items-center gap-4 mb-4">
+<h2 class="text-headline-md font-headline-md uppercase">PROJECTS_IN_PROGRESS</h2>
+<div class="flex-grow border-t border-primary border-dashed"></div>
+</div>
+<div class="space-y-4">
+<!-- Project 1 -->
+<div class="terminal-border p-4 bg-surface-container-low">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+<div class="font-bold">PROJECT_NEBULA_DECODER</div>
+<div class="font-label-mono text-xs">VERSION: v0.98-BETA</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-grow h-4 border border-white p-[2px]">
+<div class="h-full bg-white w-[85%]"></div>
+</div>
+<div class="font-label-mono">85%</div>
+</div>
+<div class="mt-2 text-xs font-label-mono text-outline">ETA: 2026-10-15T14:00:00Z</div>
+</div>
+<!-- Project 2 -->
+<div class="terminal-border p-4 bg-surface-container-low">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+<div class="font-bold">BIO_KERNEL_BYPASS</div>
+<div class="font-label-mono text-xs">VERSION: v1.0.1-ALPHA</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-grow h-4 border border-white p-[2px]">
+<div class="h-full bg-white w-[42%]"></div>
+</div>
+<div class="font-label-mono">42%</div>
+</div>
+<div class="mt-2 text-xs font-label-mono text-outline">ETA: 2027-01-20T09:00:00Z</div>
+</div>
+</div>
+</section>
+<!-- Content Block (Reference Layout) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+<!-- Instructions -->
+<div class="space-y-6">
+<div class="terminal-border p-6">
+<h3 class="text-headline-md mb-4 border-b border-primary pb-2">INSTALLATION_MANUAL</h3>
+<ul class="space-y-2 font-label-mono list-none">
+<li>- Burn or mount the iso</li>
+<li>- Run setup.exe and install</li>
+<li>- Copy the crack from voices38 to install dir</li>
+<li>- Play</li>
+<li class="pt-4 text-xs opacity-60">This release is based on game v1.0.</li>
+</ul>
+</div>
+<div class="terminal-border p-6">
+<h3 class="text-headline-md mb-4 border-b border-primary pb-2">SUPPORTERS_SINCE_LAST</h3>
+<div class="grid grid-cols-2 gap-2 text-xs font-label-mono">
+<div>- Crystal</div>
+<div>- Badwith_Names</div>
+<div>- nah</div>
+<div>- Mod Weath</div>
+<div>- kuba271k (x2)</div>
+<div>- acidmilq</div>
+<div>- DarkMahesvara</div>
+<div>- Nitsuga</div>
+<div>- Pantheon</div>
+<div>- 13 unknown</div>
+</div>
+</div>
+</div>
+<!-- Crypto Support -->
+<div class="terminal-border p-6">
+<div class="text-center mb-8">
+<div class="inline-block border-x-4 border-white px-8 py-2">
+<h2 class="text-headline-lg font-headline-lg tracking-[0.2em]">NOTES</h2>
+</div>
+</div>
+<p class="text-sm font-label-mono mb-6 leading-relaxed">
+                    Want to support the development of future cracks? You can now donate.
+                    All the funds will be used to buy various expensive hardware for testing.
+                    The denuvo iterations are getting harder to do properly, so I need hardware, to ensure stability.
+                </p>
+<div class="space-y-6 font-label-mono text-xs">
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-white text-black px-1 font-bold">BTC</span>
+<div class="flex-grow h-[1px] bg-white opacity-30"></div>
+</div>
+<div class="break-all border border-white/20 p-2 group-hover:border-white transition-colors cursor-pointer">
+                            bc1q48cvs8awyn07zqz4kvcnum2evdghjs9ruw985x
+                        </div>
+</div>
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-white text-black px-1 font-bold">XMR</span>
+<div class="flex-grow h-[1px] bg-white opacity-30"></div>
+</div>
+<div class="break-all border border-white/20 p-2 group-hover:border-white transition-colors cursor-pointer">
+                            42tbMLouwxWTq8YMKQMFNF3M2zRTRaabyKhUx5Nhkoov67WxTox9f3E3a3zQWYxJsuJi8hu5V15MWGuTUhY7GNHe3c8A169
+                        </div>
+</div>
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-white text-black px-1 font-bold">ETH</span>
+<div class="flex-grow h-[1px] bg-white opacity-30"></div>
+</div>
+<div class="break-all border border-white/20 p-2 group-hover:border-white transition-colors cursor-pointer">
+                            0x31D8A4Cb666C127e08C69F8135Ef8803dDaed61f
+                        </div>
+</div>
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-white text-black px-1 font-bold">SOL</span>
+<div class="flex-grow h-[1px] bg-white opacity-30"></div>
+</div>
+<div class="break-all border border-white/20 p-2 group-hover:border-white transition-colors cursor-pointer">
+                            ERxDeF4up9mfYnsY5p6QFMoUc8SavGSnxjbAsDYPJRPm
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ISO Details -->
+<section class="terminal-border p-4 font-label-mono text-xs opacity-70">
+<div class="flex flex-col md:flex-row justify-between">
+<span>ISO_IMAGE: VOICES38_CORE_MASTER_v1.iso</span>
+<span>Blake3 HASH: 78d4139a1c7b3c11bb57531e2917ada5731e1a6ad1af6ede882052b44562b2ad</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="docked full-width bottom-0 bg-background dark:bg-background border-t border-outline-variant dark:border-outline-variant mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-gutter max-w-container-max mx-auto">
+<div class="text-label-mono font-label-mono text-outline mb-4 md:mb-0">
+                (C) 1994-2026 VOICES38 SECURE TERMINAL
+            </div>
+<div class="flex gap-8 items-center text-label-mono font-label-mono">
+<a class="text-outline-variant dark:text-on-surface-variant hover:text-primary transition-colors underline" href="#">SYSTEM_STATUS</a>
+<a class="text-outline-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">ENCRYPTION_KEY</a>
+<a class="text-outline-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">PROTOCOL_V3</a>
+</div>
+<div class="mt-4 md:mt-0 font-label-mono text-[10px] bg-primary text-background px-2 py-1 uppercase font-bold">
+                ENCRYPTION: ACTIVE
+            </div>
+</div>
+</footer>
+<!-- Interactive Elements Scripts -->
+<script>
+        // Simple typewriter effect for the hero
+        const text = "INITIALIZING KERNEL... SECURE TUNNEL ESTABLISHED... WELCOME BACK, OPERATIVE.";
+        const element = document.getElementById('typewriter');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                element.innerHTML = text.substring(0, i + 1);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        window.onload = typeWriter;
+
+        // Visual click feedback
+        document.addEventListener('click', (e) => {
+            const circle = document.createElement('div');
+            circle.style.position = 'fixed';
+            circle.style.width = '20px';
+            circle.style.height = '20px';
+            circle.style.border = '1px solid white';
+            circle.style.borderRadius = '50%';
+            circle.style.top = `${e.clientY - 10}px`;
+            circle.style.left = `${e.clientX - 10}px`;
+            circle.style.pointerEvents = 'none';
+            circle.style.zIndex = '10000';
+            circle.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+            document.body.appendChild(circle);
+
+            setTimeout(() => {
+                circle.style.transform = 'scale(3)';
+                circle.style.opacity = '0';
+            }, 10);
+
+            setTimeout(() => {
+                circle.remove();
+            }, 300);
+        });
+    </script>
+</body></html>
