@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 
 const navItems = [
-  { to: '/', label: 'MAIN', hash: 'releases' as const },
+  { to: '/', label: 'MAIN' },
   { to: '/releases', label: 'RELEASE_ARCHIVE' },
   { to: '/info', label: 'INFO' },
 ] as const
@@ -90,12 +90,7 @@ function NavLink({
       : 'px-2 py-1 text-xs font-medium tracking-widest hover:bg-white hover:text-black'
 
   return (
-    <Link
-      to={item.to}
-      hash={'hash' in item ? item.hash : undefined}
-      onClick={onNavigate}
-      className={className}
-    >
+    <Link to={item.to} onClick={onNavigate} className={className}>
       {item.label}
     </Link>
   )

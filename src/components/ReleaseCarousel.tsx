@@ -37,7 +37,7 @@ export function ReleaseCarousel({ releases }: ReleaseCarouselProps) {
     <section className="mb-8 md:mb-12">
       <div className="terminal-border bg-black p-3 sm:p-6">
         <div className="ascii-logo-shell mb-4 sm:mb-8">
-          <pre className="ascii-header text-center text-white">{ASCII_LOGO}</pre>
+          <pre className="ascii-header text-white">{ASCII_LOGO}</pre>
         </div>
 
         <div className="border border-white p-3 sm:p-6">
