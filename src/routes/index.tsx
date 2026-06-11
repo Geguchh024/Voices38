@@ -37,7 +37,7 @@ function HomePage() {
     <Layout activeNav="MAIN">
       <ReleaseCarousel releases={data.releases} />
 
-      <section id="projects" className="mb-12 scroll-mt-28">
+      <section id="projects" className="mb-8 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:mb-12 sm:scroll-mt-28">
         <SectionHeading title="PROJECTS_IN_PROGRESS" />
         <div className="space-y-4">
           {data.projects.map((project) => (
@@ -46,9 +46,9 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="releases" className="mb-12 scroll-mt-28">
+      <section id="releases" className="mb-8 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:mb-12 sm:scroll-mt-28">
         <SectionHeading title="CURRENT_RELEASES" />
-        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-4 sm:gap-6 md:grid-cols-2">
           {data.releases.map((release) => (
             <ReleaseCard key={release.id} release={release} />
           ))}
@@ -57,7 +57,7 @@ function HomePage() {
         <div className="mt-6 flex justify-center">
           <Link
             to="/releases"
-            className="border border-white bg-white px-6 py-2 text-xs font-bold tracking-widest text-black hover:bg-transparent hover:text-white"
+            className="inline-flex min-h-11 touch-manipulation items-center border border-white bg-white px-5 py-2.5 text-xs font-bold tracking-wide text-black hover:bg-transparent hover:text-white sm:px-6 sm:tracking-widest"
           >
             LOAD_MORE.EXE
           </Link>

@@ -32,7 +32,7 @@ function ReleasesPage() {
     <Layout activeNav="RELEASE_ARCHIVE">
       <SectionHeading title="RELEASE_ARCHIVE" />
 
-      <p className="mb-6 text-sm tracking-wide">
+      <p className="mb-4 text-xs leading-relaxed tracking-wide sm:mb-6 sm:text-sm">
         Full catalog of VOICES38 releases. All archived entries are listed below.
       </p>
 
@@ -41,7 +41,7 @@ function ReleasesPage() {
       <div className="mt-8 flex justify-center">
         <Link
           to="/"
-          className="border border-white px-6 py-2 text-xs font-bold tracking-widest hover:bg-white hover:text-black"
+          className="inline-flex min-h-11 touch-manipulation items-center border border-white px-5 py-2.5 text-xs font-bold tracking-wide hover:bg-white hover:text-black sm:px-6 sm:tracking-widest"
         >
           &lt; RETURN_TO_HUB
         </Link>

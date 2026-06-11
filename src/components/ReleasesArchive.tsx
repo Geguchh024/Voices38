@@ -7,7 +7,7 @@ interface ReleasesArchiveProps {
 
 export function ReleasesArchive({ releases }: ReleasesArchiveProps) {
   return (
-    <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+    <div className="grid grid-cols-1 items-start gap-4 sm:gap-6 md:grid-cols-2">
       {releases.map((release) => (
         <ReleaseCard key={release.id} release={release} />
       ))}

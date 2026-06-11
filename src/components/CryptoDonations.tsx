@@ -12,17 +12,19 @@ export function CryptoDonations({ notes, wallets, contactEmail }: CryptoDonation
   }
 
   return (
-    <div className="terminal-border p-6">
-      <div className="mb-8 text-center">
-        <div className="inline-block border-x-4 border-white px-8 py-2">
-          <h2 className="text-2xl font-bold tracking-[0.2em]">NOTES</h2>
+    <div className="terminal-border p-3 sm:p-6">
+      <div className="mb-6 text-center sm:mb-8">
+        <div className="inline-block border-x-2 border-white px-4 py-2 sm:border-x-4 sm:px-8">
+          <h2 className="text-lg font-bold tracking-[0.1em] sm:text-2xl sm:tracking-[0.2em]">
+            NOTES
+          </h2>
         </div>
       </div>
 
-      <p className="mb-6 text-sm leading-relaxed tracking-wide">{notes}</p>
+      <p className="mb-4 text-xs leading-relaxed tracking-wide sm:mb-6 sm:text-sm">{notes}</p>
 
       {contactEmail && (
-        <p className="mb-6 text-sm tracking-widest">
+        <p className="mb-4 text-xs tracking-wide break-all sm:mb-6 sm:text-sm sm:tracking-widest">
           CONTACT:{' '}
           <a href={`mailto:${contactEmail}`} className="underline hover:opacity-70">
             {contactEmail}
@@ -30,7 +32,7 @@ export function CryptoDonations({ notes, wallets, contactEmail }: CryptoDonation
         </p>
       )}
 
-      <div className="space-y-6 text-xs tracking-widest">
+      <div className="space-y-4 text-[0.65rem] tracking-wide sm:space-y-6 sm:text-xs sm:tracking-widest">
         {wallets.map((wallet) => (
           <div key={wallet.symbol} className="group">
             <div className="mb-1 flex items-center gap-2">
@@ -40,7 +42,7 @@ export function CryptoDonations({ notes, wallets, contactEmail }: CryptoDonation
             <button
               type="button"
               onClick={() => copyAddress(wallet.address)}
-              className="w-full cursor-pointer break-all border border-white/20 p-2 text-left transition-colors group-hover:border-white"
+              className="min-h-11 w-full touch-manipulation cursor-pointer break-all border border-white/20 p-2.5 text-left text-[0.65rem] transition-colors group-hover:border-white sm:p-2 sm:text-xs"
               title="Click to copy"
             >
               {wallet.address}

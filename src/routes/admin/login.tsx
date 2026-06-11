@@ -66,9 +66,9 @@ function AdminLoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black text-white font-mono">
+    <div className="flex min-h-screen items-center justify-center bg-black px-4 py-6 text-white font-mono">
       <div className="w-full max-w-md">
-        <div className="terminal-border p-8">
+        <div className="terminal-border p-5 sm:p-8">
           <h1 className="mb-6 text-center text-sm font-bold tracking-widest">
             ┌─ VOICES38 ADMIN ─┐
           </h1>
@@ -90,7 +90,7 @@ function AdminLoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={pending}
-                className="w-full border border-white bg-black px-3 py-2 text-sm text-white outline-none focus:border-gray-400 disabled:opacity-50"
+                className="w-full border border-white bg-black px-3 py-3 text-base text-white outline-none focus:border-gray-400 disabled:opacity-50 sm:py-2 sm:text-sm"
                 placeholder="admin@voices38.dev"
               />
             </div>
@@ -106,7 +106,7 @@ function AdminLoginPage() {
                 required
                 minLength={8}
                 disabled={pending}
-                className="w-full border border-white bg-black px-3 py-2 text-sm text-white outline-none focus:border-gray-400 disabled:opacity-50"
+                className="w-full border border-white bg-black px-3 py-3 text-base text-white outline-none focus:border-gray-400 disabled:opacity-50 sm:py-2 sm:text-sm"
                 placeholder="••••••••"
               />
             </div>
@@ -120,7 +120,7 @@ function AdminLoginPage() {
             <button
               type="submit"
               disabled={pending || isLoading}
-              className="w-full border border-white bg-white px-4 py-2 text-xs font-bold tracking-widest text-black hover:bg-transparent hover:text-white disabled:opacity-50"
+              className="min-h-11 w-full touch-manipulation border border-white bg-white px-4 py-3 text-xs font-bold tracking-wide text-black hover:bg-transparent hover:text-white disabled:opacity-50 sm:py-2 sm:tracking-widest"
             >
               {pending ? 'PROCESSING...' : 'LOGIN.EXE'}
             </button>

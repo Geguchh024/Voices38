@@ -14,7 +14,6 @@ export const migrateShopReleaseDateToCrackDate = internalMutation({
       if (legacy.shopReleaseDate && !release.crackDate) {
         await ctx.db.patch("releases", release._id, {
           crackDate: legacy.shopReleaseDate,
-          shopReleaseDate: undefined,
         });
         migrated += 1;
       }
